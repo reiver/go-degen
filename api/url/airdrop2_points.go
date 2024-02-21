@@ -4,7 +4,7 @@ import (
 	gourl "net/url"
 )
 
-// AirDrop2PointsUsingWalletAddress returns the URL for the follow degen API end-point:
+// AirDrop2PointsUsingWalletAddress returns the URL for the following degen API end-point:
 //
 //	/api/airdrop2/points?address=<wallet>
 func AirDrop2PointsUsingWalletAddress(walletAddress string) string {

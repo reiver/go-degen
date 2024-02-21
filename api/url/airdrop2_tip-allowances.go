@@ -1,6 +1,6 @@
 package degenapiurl
 
-// AirDrop2TipAllowances returns the URL for the follow degen API end-point:
+// AirDrop2TipAllowances returns the URL for the following degen API end-point:
 //
 //	/api/airdrop2/tip-allowances
 func AirDrop2TipAllowances() string {

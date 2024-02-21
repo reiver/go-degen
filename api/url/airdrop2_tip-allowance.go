@@ -4,7 +4,7 @@ import (
 	gourl "net/url"
 )
 
-// AirDrop2TipAllowanceUsingWalletAddress returns the URL for the follow degen API end-point:
+// AirDrop2TipAllowanceUsingWalletAddress returns the URL for the following degen API end-point:
 //
 //	/api/airdrop2/tip-allowance?address=<wallet>
 func AirDrop2TipAllowanceUsingWalletAddress(walletAddress string) string {
@@ -26,7 +26,7 @@ func AirDrop2TipAllowanceUsingWalletAddress(walletAddress string) string {
 }
 
 
-// AirDrop2TipPointsUsingFarcasterID returns the URL for the follow degen API end-point:
+// AirDrop2TipPointsUsingFarcasterID returns the URL for the following degen API end-point:
 //
 //	/api/airdrop2/tip-allowance?fid=<Farcaster ID>
 func AirDrop2TipAllowanceUsingFarcasterID(farcasterID string) string {
