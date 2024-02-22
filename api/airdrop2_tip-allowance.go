@@ -2,10 +2,8 @@ package degenapi
 
 import (
 	"encoding/json"
-	"io"
 	"net/http"
 
-	"sourcecode.social/reiver/go-errhttp"
 	"sourcecode.social/reiver/go-opt"
 
 	"github.com/reiver/go-degen/api/url"
@@ -29,13 +27,15 @@ func GetAirDrop2TipAllowanceUsingWalletAddress(dailyTipAllowance *AirDrop2DailyT
 		return errNilHTTPResponse
 	}
 
-	return getAirDrop2TipAllowance(dailyTipAllowance, resp)
+	return handleHTTPResponse(resp, func(p []byte)error{
+		return unmarshalAirDrop2TipAllowance(dailyTipAllowance, p)
+	})
 }
 
-// GetAirDrop2TipPointsUsingFarcasterID calls the following degen API end-point:
+// GetAirDrop2TipAllowanceUsingFarcasterID calls the following degen API end-point:
 //
 //	/api/airdrop2/tip-allowance?fid=<Farcaster ID>
-func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *ApiDrop2DailyTipAllowance,farcasterID string) error {
+func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *AirDrop2DailyTipAllowance,farcasterID string) error {
 	if nil == dailyTipAllowance {
 		return errNilTarget
 	}
@@ -50,36 +50,12 @@ func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *ApiDrop2DailyTip
 		return errNilHTTPResponse
 	}
 
-	return getAirDrop2TipAllowance(dailyTipAllowance, resp)
+	return handleHTTPResponse(resp, func(p []byte)error{
+		return unmarshalAirDrop2TipAllowance(dailyTipAllowance, p)
+	})
 }
 
-func getAirDrop2TipAllowance(dailyTipAllowance *ApiDrop2DailyTipAllowance, resp *http.Response) error {
-
-	if http.StatusOK != resp.StatusCode {
-		return errhttp.Return(resp.StatusCode)
-	}
-
-	var p []byte
-	{
-		var readcloser io.ReadCloser = resp.Body
-		if nil == readcloser {
-			return errNilReadCloser
-		}
-		defer readcloser.Close()
-
-		var err error
-
-		p, err = io.ReadAll(readcloser)
-		if nil != err {
-			return err
-		}
-		readcloser.Close()
-	}
-
-	return putApiDrop2TipAllowance(dailyTipAllowance, p)
-}
-
-func putApiDrop2TipAllowance(dailyTipAllowance *ApiDrop2DailyTipAllowance, p []byte) error {
+func unmarshalAirDrop2TipAllowance(dailyTipAllowance *AirDrop2DailyTipAllowance, p []byte) error {
 	if nil == dailyTipAllowance {
 		return errNilTipAllowance
 	}

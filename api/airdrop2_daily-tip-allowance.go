@@ -4,7 +4,7 @@ import (
 	"sourcecode.social/reiver/go-opt"
 )
 
-type ApiDrop2DailyTipAllowance struct {
+type AirDrop2DailyTipAllowance struct {
 	FID                opt.Optional[string]
 	SnapshotDate       opt.Optional[string]
 	UserRank           opt.Optional[string]

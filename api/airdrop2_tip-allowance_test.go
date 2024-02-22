@@ -6,15 +6,15 @@ import (
 	"sourcecode.social/reiver/go-opt"
 )
 
-func TestPutApiDrop2TipAllowance(t *testing.T) {
+func TestUnmarshalAirDrop2TipAllowance(t *testing.T) {
 
 	tests := []struct{
 		JSON string
-		Expected ApiDrop2DailyTipAllowance
+		Expected AirDrop2DailyTipAllowance
 	}{
 		{
 			JSON: "[]",
-			Expected: ApiDrop2DailyTipAllowance{},
+			Expected: AirDrop2DailyTipAllowance{},
 		},
 
 
@@ -26,7 +26,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"snapshot_date":"2024-02-21T00:00:00.000Z"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 			},
 		},
@@ -39,7 +39,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"user_rank":"25789"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 			},
@@ -55,7 +55,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"wallet_address":"0xfecdab9876543210123456789abcdefedcba9876"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 				WalletAddress: opt.Something("0xfecdab9876543210123456789abcdefedcba9876"),
@@ -74,7 +74,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"avatar_url":"https://example.com/bN604M3.jpeg"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 				WalletAddress: opt.Something("0xfecdab9876543210123456789abcdefedcba9876"),
@@ -96,7 +96,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"display_name":"Joe Blow"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 				WalletAddress: opt.Something("0xfecdab9876543210123456789abcdefedcba9876"),
@@ -121,7 +121,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"tip_allowance":"326"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 				WalletAddress: opt.Something("0xfecdab9876543210123456789abcdefedcba9876"),
@@ -149,7 +149,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"remaining_allowance":"26"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
 				WalletAddress: opt.Something("0xfecdab9876543210123456789abcdefedcba9876"),
@@ -180,7 +180,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"remaining_allowance":"26"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				FID: opt.Something("269231"),
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
@@ -214,7 +214,7 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 				`"remaining_allowance":"26"`+
 				`}`+
 				`]`,
-			Expected: ApiDrop2DailyTipAllowance{
+			Expected: AirDrop2DailyTipAllowance{
 				FID: opt.Something("269231"),
 				SnapshotDate: opt.Something("2024-02-21T00:00:00.000Z"),
 				UserRank: opt.Something("25789"),
@@ -232,9 +232,9 @@ func TestPutApiDrop2TipAllowance(t *testing.T) {
 
 		var p []byte = []byte(test.JSON)
 
-		var actual ApiDrop2DailyTipAllowance
+		var actual AirDrop2DailyTipAllowance
 
-		err := putApiDrop2TipAllowance(&actual, p)
+		err := unmarshalAirDrop2TipAllowance(&actual, p)
 
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error but actually got one." , testNumber)
