@@ -53,21 +53,21 @@ func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *AirDrop2DailyTip
 	})
 }
 
-func unmarshalAirDrop2TipAllowance(dailyTipAllowance *AirDrop2DailyTipAllowance, p []byte) error {
-	if nil == dailyTipAllowance {
+func unmarshalAirDrop2TipAllowance(target *AirDrop2DailyTipAllowance, p []byte) error {
+	if nil == target {
 		return errNilTarget
 	}
 
-	var dailyTipAllowances []AirDrop2DailyTipAllowance
+	var list []AirDrop2DailyTipAllowance
 
-	if err := json.Unmarshal(p, &dailyTipAllowances); nil != err {
+	if err := json.Unmarshal(p, &list); nil != err {
 		return err
 	}
 
-	if len(dailyTipAllowances) < 1 {
+	if len(list) < 1 {
 		return nil
 	}
 
-	*dailyTipAllowance = dailyTipAllowances[0]
+	*target = list[0]
 	return nil
 }

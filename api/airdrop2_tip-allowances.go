@@ -30,10 +30,10 @@ func GetAirDrop2TipAllowances(dailyTipAllowances *[]AirDrop2DailyTipAllowance) e
 	})
 }
 
-func unmarshalAirDrop2TipAllowances(dailyTipAllowances *[]AirDrop2DailyTipAllowance, p []byte) error {
-	if nil == dailyTipAllowances {
+func unmarshalAirDrop2TipAllowances(target *[]AirDrop2DailyTipAllowance, p []byte) error {
+	if nil == target {
 		return errNilTarget
 	}
 
-	return json.Unmarshal(p, &dailyTipAllowances)
+	return json.Unmarshal(p, &target)
 }
