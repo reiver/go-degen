@@ -40,58 +40,22 @@ func GetAirDrop2PointsUsingWalletAddress(points *AirDrop2Points, walletAddress s
 	})
 }
 
-func unmarshalAirDrop2Points(points *AirDrop2Points, p []byte) error {
-	if nil == points {
+func unmarshalAirDrop2Points(target *AirDrop2Points, p []byte) error {
+	if nil == target {
 		return errNilTarget
 	}
 
-	var result []map[string]string = []map[string]string{}
+	var list []AirDrop2Points
 
-	err := json.Unmarshal(p, &result)
-	if nil != err {
+	if err := json.Unmarshal(p, &list); nil != err {
 		return err
 	}
 
-	if len(result) < 1 {
+	if len(list) < 1 {
 		return nil
 	}
-	var result0 map[string]string = result[0]
 
-//	{
-//		const name string = "fid"
-//
-//		value, found := result0[name]
-//		if found {
-//			points.FID = opt.Something(value)
-//		}
-//	}
-
-//	{
-//		const name string = "wallet_address"
-//
-//		value, found := result0[name]
-//		if found {
-//			points.WalletAddress = opt.Something(value)
-//		}
-//	}
-
-//	{
-//		const name string = "avatar_url"
-//
-//		value, found := result0[name]
-//		if found {
-//			points.AvatarURL = opt.Something(value)
-//		}
-//	}
-
-	{
-		const name string = "display_name"
-
-		value, found := result0[name]
-		if found {
-			points.DisplayName = opt.Something(value)
-		}
-	}
-
+	*target = list[0]
 	return nil
 }
+
