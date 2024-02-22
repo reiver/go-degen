@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"sourcecode.social/reiver/go-erorr"
+
 	"github.com/reiver/go-degen/api/url"
 )
 
@@ -19,7 +21,7 @@ func GetAirDrop2TipAllowances(dailyTipAllowances *[]AirDrop2DailyTipAllowance) e
 
 	resp, err := http.Get(url)
 	if nil != err {
-		return err
+		return erorr.Errorf("degen: problem making a request to %q: %w", url, err)
 	}
 	if nil == resp {
 		return errNilHTTPResponse
