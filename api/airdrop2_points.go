@@ -58,4 +58,3 @@ func unmarshalAirDrop2Points(target *AirDrop2Points, p []byte) error {
 	*target = list[0]
 	return nil
 }
-
