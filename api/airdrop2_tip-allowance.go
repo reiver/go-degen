@@ -14,9 +14,9 @@ import (
 // GetAirDrop2TipAllowanceUsingWalletAddress calls the following degen API end-point:
 //
 //	/api/airdrop2/tip-allowance?address=<wallet>
-func GetAirDrop2TipAllowanceUsingWalletAddress(dailyTipAllowance *ApiDrop2DailyTipAllowance, walletAddress string) error {
+func GetAirDrop2TipAllowanceUsingWalletAddress(dailyTipAllowance *AirDrop2DailyTipAllowance, walletAddress string) error {
 	if nil == dailyTipAllowance {
-		return errNilTipAllowance
+		return errNilTarget
 	}
 
 	var url string = degenapiurl.AirDrop2TipAllowanceUsingWalletAddress(walletAddress)
@@ -37,7 +37,7 @@ func GetAirDrop2TipAllowanceUsingWalletAddress(dailyTipAllowance *ApiDrop2DailyT
 //	/api/airdrop2/tip-allowance?fid=<Farcaster ID>
 func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *ApiDrop2DailyTipAllowance,farcasterID string) error {
 	if nil == dailyTipAllowance {
-		return errNilTipAllowance
+		return errNilTarget
 	}
 
 	var url string = degenapiurl.AirDrop2TipAllowanceUsingFarcasterID(farcasterID)
