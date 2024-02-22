@@ -10,11 +10,11 @@ import (
 )
 
 type AirDrop2Points struct {
-//	FID           opt.Optional[string]
-//	WalletAddress opt.Optional[string]
-//	AvatarURL     opt.Optional[string]
-	DisplayName   opt.Optional[string]
-	Points        opt.Optional[string]
+//	FID           opt.Optional[string] `json:"fid"`
+//	WalletAddress opt.Optional[string] `json:"wallet_address"`
+//	AvatarURL     opt.Optional[string] `json:"avatar_url"`
+	DisplayName   opt.Optional[string] `json:"display_name"`
+	Points        opt.Optional[string] `json:"points"`
 }
 
 // GetAirDrop2PointsUsingWalletAddress calls the following degen API end-point:
