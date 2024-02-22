@@ -14,7 +14,7 @@ func AirDrop2PointsUsingWalletAddress(walletAddress string) string {
 	var url string
 	{
 		const requestPrefix = "/api/airdrop2/points?address="
-		const urlPrefix string = scheme + "://" + requestPrefix
+		const urlPrefix string = scheme + "://" + host + "/" + requestPrefix
 
 		p = append(p, urlPrefix...)
 		p = append(p, gourl.QueryEscape(walletAddress)...)

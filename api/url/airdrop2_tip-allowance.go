@@ -14,7 +14,7 @@ func AirDrop2TipAllowanceUsingWalletAddress(walletAddress string) string {
 	var url string
 	{
 		const requestPrefix = "/api/airdrop2/tip-allowance?address="
-		const urlPrefix string = scheme + "://" + requestPrefix
+		const urlPrefix string = scheme + "://" + host + "/" + requestPrefix
 
 		p = append(p, urlPrefix...)
 		p = append(p, gourl.QueryEscape(walletAddress)...)

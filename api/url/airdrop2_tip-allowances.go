@@ -5,7 +5,7 @@ package degenapiurl
 //	/api/airdrop2/tip-allowances
 func AirDrop2TipAllowances() string {
 	const request = "/api/airdrop2/tip-allowances"
-	const url string = scheme + "://" + request
+	const url string = scheme + "://" + "host" + "/" + request
 
 	return url
 }
