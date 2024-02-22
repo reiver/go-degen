@@ -42,7 +42,7 @@ func GetAirDrop2PointsUsingWalletAddress(points *AirDrop2Points, walletAddress s
 
 func unmarshalAirDrop2Points(points *AirDrop2Points, p []byte) error {
 	if nil == points {
-		return errTarget
+		return errNilTarget
 	}
 
 	var result []map[string]string = []map[string]string{}
