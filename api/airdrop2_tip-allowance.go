@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"sourcecode.social/reiver/go-opt"
-
 	"github.com/reiver/go-degen/api/url"
 )
 
@@ -60,98 +58,16 @@ func unmarshalAirDrop2TipAllowance(dailyTipAllowance *AirDrop2DailyTipAllowance,
 		return errNilTarget
 	}
 
-	var result []map[string]string = []map[string]string{}
+	var dailyTipAllowances []AirDrop2DailyTipAllowance
 
-	err := json.Unmarshal(p, &result)
-	if nil != err {
+	if err := json.Unmarshal(p, &dailyTipAllowances); nil != err {
 		return err
 	}
 
-	if len(result) < 1 {
+	if len(dailyTipAllowances) < 1 {
 		return nil
 	}
-	var result0 map[string]string = result[0]
 
-	{
-		const name string = "fid"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.FID = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "snapshot_date"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.SnapshotDate = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "user_rank"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.UserRank = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "wallet_address"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.WalletAddress = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "avatar_url"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.AvatarURL = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "display_name"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.DisplayName = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "reactions_per_cast"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.ReactionsPerCast = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "tip_allowance"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.TipAllowance = opt.Something(value)
-		}
-	}
-
-	{
-		const name string = "remaining_allowance"
-
-		value, found := result0[name]
-		if found {
-			dailyTipAllowance.RemainingAllowance = opt.Something(value)
-		}
-	}
-
+	*dailyTipAllowance = dailyTipAllowances[0]
 	return nil
 }

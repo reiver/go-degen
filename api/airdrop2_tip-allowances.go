@@ -26,6 +26,14 @@ func GetAirDrop2TipAllowances(dailyTipAllowances *[]AirDrop2DailyTipAllowance) e
 	}
 
 	return handleHTTPResponse(resp, func(p []byte)error{
-		return json.Unmarshal(p, dailyTipAllowances)
+		return unmarshalAirDrop2TipAllowances(dailyTipAllowances, p)
 	})
+}
+
+func unmarshalAirDrop2TipAllowances(dailyTipAllowances *[]AirDrop2DailyTipAllowance, p []byte) error {
+	if nil == dailyTipAllowances {
+		return errNilTarget
+	}
+
+	return json.Unmarshal(p, &dailyTipAllowances)
 }
