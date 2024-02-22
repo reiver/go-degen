@@ -57,7 +57,7 @@ func GetAirDrop2TipAllowanceUsingFarcasterID(dailyTipAllowance *AirDrop2DailyTip
 
 func unmarshalAirDrop2TipAllowance(dailyTipAllowance *AirDrop2DailyTipAllowance, p []byte) error {
 	if nil == dailyTipAllowance {
-		return errNilTipAllowance
+		return errNilTarget
 	}
 
 	var result []map[string]string = []map[string]string{}
